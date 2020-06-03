@@ -43,12 +43,17 @@ jobs:
 
         - name: Install packages
           run: |
+            Rscript -e "install.packages('remotes')" -e "remotes::install_github('r-hub/sysreqs')"
+            sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
+            sudo -s eval "$sysreqs"
+            Rscript -e "install.packages('remotes')" -e "remotes::install_deps(dependencies = TRUE)" -e "remotes::install_cran('rcmdcheck')"
+            Rscript -e "remotes::install_github('rstudio/reticulate')"
+            Rscript -e "reticulate::install_miniconda()"
+            Rscript -e "reticulate::conda_create('r-reticulate', packages = c('python==3.6.9'))"
             R -e 'install.packages("renv")'
             R -e 'renv::restore()'
             R -e 'install.packages("tinytex")'
             R -e 'tinytex::install_tinytex()'
-            R -e 'install.packages("reticulate")'
-            R -e 'library(reticulate)'
             R -e 'reticulate::use_python("/usr/bin/python3", required=TRUE)'
             R -e 'reticulate::py_install("pandas")'
             R -e 'reticulate::py_install("datetime")'
