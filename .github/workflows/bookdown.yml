@@ -43,7 +43,7 @@ jobs:
             R -e 'tinytex::install_tinytex()'
             R -e 'install.packages("reticulate")'
             R -e 'library(reticulate)'
-            R -e 'use_python("/usr/bin/python3", required=TRUE)'
+            R -e 'reticulate::use_python("/usr/bin/python3", required=TRUE)'
 
         - name: Build site
           run: Rscript -e 'bookdown::render_book("index.Rmd", encoding = "utf-8", output_dir = "docs", output_format = "all", quiet = TRUE)'
