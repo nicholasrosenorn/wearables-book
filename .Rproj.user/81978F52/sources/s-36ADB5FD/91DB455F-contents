@@ -1,0 +1,18 @@
+# Working in Python
+
+In this section, we will cover many important computing fundamtentals using the python programming language. These fundamentals are transferrable between many programming languages so laying a strong foundation will prove benfeficail. 
+
+## Python Introduction
+
+Python is an interpreted, high-level programming language. Python is often associated as a Object Oriented Programming language as well meaning that objects within the programs can contain data. The first example of an object in python is a variable. 
+
+```{python}
+# Words after the pound (#) sign are comments. These lines are ignored when the program runs!
+myvar = 10
+
+result = myvar*10
+
+result
+```
+
+The object 'myvar' is a python variable. In the example above, it stores the value 10.  

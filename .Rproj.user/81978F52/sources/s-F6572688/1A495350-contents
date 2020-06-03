@@ -1,0 +1,8 @@
+#Dependencies"
+
+This is a rmarkdow
+
+```{r chunk-label, echo = FALSE, fig.cap = 'A figure caption.'}
+print("hello world")
+```
+

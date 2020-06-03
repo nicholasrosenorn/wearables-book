@@ -1,0 +1,115 @@
+--- 
+title: "Wearables Book"
+author: "Merck and Data Mine Corporate Partnership Team"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "This a tutorial based book covering many foundational data science skills and using applying these skills to a complete, end-to-end project."
+---
+--- 
+title: "Wearables Book"
+author: "Merck and Data Mine Corporate Partnership Team"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "This a tutorial based book covering many foundational data science skills and using applying these skills to a complete, end-to-end project."
+---
+
+# Book Overview
+
+A foundation of knowledge in the data sciences can prove advantageous for almost all scientists. Often, however, understanding the fundamentals of any new skill lacking proper instruction or recourses can be difficult. With ample guidance, all can develop a base knowledge of Data Science that can grow and provide new skills for improved research experiences. 
+
+The sets of instruction, examples, and tutorials in this walk-through are specifically designed for Merck Technology and can be distributed to Merck Scientists. The walk-through will be tailored to the needs of the pharmaceutical industry and will relate to work being done at Merck.
+
+In this walkthrough, a complete, end-to-end, project will be outlined with instructional and applicational opportunities throughout. 
+
+<!--chapter:end:index.Rmd-->
+
+# Data Science Overview {#intro}
+
+Data Science is an interdisciplinary field aimed to extract insight from structured and unstructured data. An intersection between computing, statistics, mathematics, and domain application, data science reveals new meaning to the extreme amounts of data being collected and stored every day. 
+
+Some of the foundational skills that the data sciences require include basic computing and data analysis knowledge. A range of technologies are used daily by data scientists, including Python, R, Hadoop, Bash, and more. Statistical concepts like descriptive statistics, probability, Bayesian theory, and modeling are used in combination with the previously mentioned technologies to gain insight from data. 
+
+
+<!--chapter:end:01-DSOverview.Rmd-->
+
+# Project Introduction
+
+An end-to-end project will be outlined in the remainder of the text. Primary concepts included are data capture, data visualization, and client-server communication. The technologies covered will include Python, Bash, SQL, R, and React Native along with many useful packages and dependencies. 
+
+Throughout each section of the text, there will be an introduction to a new technology. Basic programming skills and logic explanation related to the technology will be covered within this section. Using the skills taught, the walkthrough section will follow, where instruction related to the overall project will be given.
+
+The project being taught in this text is a data capture project that will evolve into a basic mobile application. Using Fitbit technology, users are collecting massive amounts of biometric data that, if captured properly, can be used to benefit pharmaceutical research. Patient activity, heart, sleep, and weight data can all be captured seamlessly. The medicinal benefits are great with a tool like this. It is through simple computing and foundational data science topics that a pipeline and tool can be engineered. 
+
+<!--chapter:end:02-ProjectIntroduction.Rmd-->
+
+# Merck Technology
+
+<!--chapter:end:03-MerckTech.Rmd-->
+
+# Fitbit Technology
+
+To begin the project, we will begin by discussing application programming interfaces (API). APIs are tools that allow developers to begin work easily. Often times, an API is a set of functions or methods that allow for replication of previously developed services. When released publicly, APIs allow for developers to gain access easily to features and data of large services.
+
+The API that this walk-through works with is the Fitbit Web API. The API can be found at https://dev.fitbit.com/build/reference/web-api/basics/ and the accompanying documentation can be found at https://python-fitbit.readthedocs.io/en/latest/. 
+
+The first step to using the Fitbit API is to create a Fitbit account. Creating a new account can be found at https://accounts.fitbit.com/signup. You will be presented with the screen show below. Simply, enter an email and password of choice to create an account. You do not have to associate a Fitbit device to complete this tutorial. While no personal data will be collected due to lack of a device, the walk-through will still cover how properly use the API to access data. When data is necessary for later in the tutorial, dummy data will be provided. 
+
+<center>![Figure 1](images/fitbitAccount.png){width=40%}</center>
+
+After registering your Fitbit account, proceed to https://dev.fitbit.com/login and login with the account credentials you just created. Click on ‘manage’ and ‘register an app’ in the navigation bar. You will then be presented with the screen show in figure 2. Fill out the necessary registration fields and click ‘register’ at the bottom of the page. 
+
+<center>![Figure 2](images/registerApp.png){width=75%}</center>
+
+Now that an application is registered to your account, you can navigate to your apps. When clicking on the recently created app you will see a samilar display as in Figure 3. 
+
+<center>![Figure 3](images/appDetails.png){width=75%}</center>
+
+The creation and registration of this app with fitbit will be neccessary for the entirity of the tutorial. We will return to the information shown soon.
+
+<!--chapter:end:04-FitbitTechnology.Rmd-->
+
+# Dependencies
+
+For this project, it will be easiest for work in an Anaconda enirvonement. Anaconda is an open-source Data Science toolkit. It allows users to easily work with thousands of open-source packages.
+
+Install Anaconda here: https://docs.anaconda.com/anaconda/install/. Follow the steps provided to install for your machine. 
+
+After you have installed Anaconda, open the Anaconda Navigator. It will look similar to the image below. 
+
+<center>!['Figure 1'](images/anacondanav.png){width=80%}</center>
+
+On the left side navigation bar, click on evironments and then search for 'cherrypy'.
+
+<!--chapter:end:05-Dependencies.Rmd-->
+
+# Working in Python
+
+In this section, we will cover many important computing fundamtentals using the python programming language. These fundamentals are transferrable between many programming languages so laying a strong foundation will prove benfeficail. 
+
+## Python Introduction
+
+Python is an interpreted, high-level programming language. Python is often associated as a Object Oriented Programming language as well meaning that objects within the programs can contain data. The first example of an object in python is a variable. 
+
+```{python}
+# Words after the pound (#) sign are comments. These lines are ignored when the program runs!
+myvar = 10
+
+result = myvar*10
+
+result
+```
+
+The object 'myvar' is a python variable. In the example above, it stores the value 10.  
+
+<!--chapter:end:06-workinginpython.Rmd-->
+
