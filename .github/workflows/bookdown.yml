@@ -44,6 +44,12 @@ jobs:
             R -e 'install.packages("reticulate")'
             R -e 'library(reticulate)'
             R -e 'reticulate::use_python("/usr/bin/python3", required=TRUE)'
+            R -e 'reticulate::py_install("pandas")'
+            R -e 'reticulate::py_install("datetime")'
+            R -e 'reticulate::py_install("json")'
+            R -e 'reticulate::py_install("requests")'
+            R -e 'reticulate::py_install("matplotlib")'
+            R -e 'reticulate::py_install("python-oauth2")'
 
         - name: Build site
           run: Rscript -e 'bookdown::render_book("index.Rmd", encoding = "utf-8", output_dir = "docs", output_format = "all", quiet = TRUE)'
