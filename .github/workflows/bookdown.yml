@@ -41,6 +41,8 @@ jobs:
             R -e 'renv::restore()'
             R -e 'install.packages("tinytex")'
             R -e 'tinytex::install_tinytex()'
+            R -e 'install.packages("reticulate")'
+            R -e 'library(reticulate)'
 
         - name: Build site
           run: Rscript -e 'bookdown::render_book("index.Rmd", encoding = "utf-8", output_dir = "docs", output_format = "all", quiet = TRUE)'
