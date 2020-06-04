@@ -55,6 +55,7 @@ jobs:
             python3 -m pip install matplotlib
             python3 -m pip install python-oauth2
             python3 -m pip install requests-oauthlib
+            python3 -m pip install CherryPy
 
 
         - name: Build site
