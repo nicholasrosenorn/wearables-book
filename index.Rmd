@@ -3,12 +3,21 @@ title: "Wearables Book"
 author: "Merck and Data Mine Corporate Partnership Team"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
-output: bookdown::gitbook
 documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 description: "This a tutorial based book covering many foundational data science skills and using applying these skills to a complete, end-to-end project."
+output:
+  bookdown::pdf_book:
+    number_sections: no
+  bookdown::epub_book:
+    number_sections: no
+  bookdown::gitbook:
+    number_sections: no
+knit: (function(inputFile, encoding) {
+  bookdown::render_book(inputFile, encoding = encoding,
+  output_dir = "docs", output_format = "all") })
 ---
 
 # Book Overview
