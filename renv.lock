@@ -25,15 +25,10 @@
     },
     "bookdown": {
       "Package": "bookdown",
-      "Version": "0.18.1",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "bookdown",
-      "RemoteUsername": "rstudio",
-      "RemoteRef": "master",
-      "RemoteSha": "cd97d40eccd2ce8d05e39b7815ede59f7b3aa4d6",
-      "Hash": "d27ae754841051e1bc19eef1e1e6d3b6"
+      "Version": "0.19",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "4f669b7b4f236538e6afc311f32d2c93"
     },
     "digest": {
       "Package": "digest",
@@ -51,10 +46,10 @@
     },
     "glue": {
       "Package": "glue",
-      "Version": "1.4.0",
+      "Version": "1.4.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "2aefa994e8df5da17dc09afd80f924d5"
+      "Hash": "f43e0d5e85ccb0a4045670c0607ee504"
     },
     "highr": {
       "Package": "highr",
@@ -114,17 +109,17 @@
     },
     "rlang": {
       "Package": "rlang",
-      "Version": "0.4.5",
+      "Version": "0.4.6",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "1cc1b38e4db40ea6eb19ab8080bbed3b"
+      "Hash": "aa263e3ce17b177c49e0daade2ee3cdc"
     },
     "rmarkdown": {
       "Package": "rmarkdown",
-      "Version": "2.1",
+      "Version": "2.2",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "9d1c61d476c448350c482d6664e1b28b"
+      "Hash": "aa82ab08b203d5a32a5b5f404e80c399"
     },
     "stringi": {
       "Package": "stringi",
@@ -142,17 +137,17 @@
     },
     "tinytex": {
       "Package": "tinytex",
-      "Version": "0.22",
+      "Version": "0.23",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "8b0712f45a05c8e79ce7ba06b249583c"
+      "Hash": "a8c653ef8ce67683f588e6088ed45572"
     },
     "xfun": {
       "Package": "xfun",
-      "Version": "0.13",
+      "Version": "0.14",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "3c1eeacd705ff1695db94bfd443b8a84"
+      "Hash": "60e146e3aba37a547e12306dc3da77a6"
     },
     "yaml": {
       "Package": "yaml",
