@@ -10,15 +10,17 @@ Next, download python on to your computer at https://www.python.org/downloads/. 
 
 Lastly, open a new terminal, and run the following commands:
 
+```{python, eval=FALSE}
 pip install cherrypy (you can also use the Anaconda navigator to install cherrypy)
 
 pip install requests-oauthlib  
+```
 
 ## Imports
 
 This project requires multiple packages. If the steps in the previous sections have been followed, these import statements should run seamlessly.
 
-```{python}
+```{python, eval=FALSE}
 #Import the necessary packages
 import fitbit
 import gather_keys_oauth2 as Oauth2
@@ -33,7 +35,7 @@ Remembering back to the Fibit Technology section, we registered an app on the Fi
 
 Use the following code gain access to your account:
 
-```{python}
+```{python, eval=FALSE}
 CLIENT_ID = '22BLXS' #ENTER CLIENT ID CODE HERE 
 CLIENT_SECRET = 'a259368e5736a4171753dba8133f06d4' #ENTER CLIENT SECRET CODE HERE
 
@@ -61,28 +63,27 @@ Now that the authentication is complete, we can access our data.
 
 To start, we need to delcare a date to collect data from. Let's use today's date:
 
-```{python}
+```{python, eval=FALSE}
 today = str(datetime.datetime.now().strftime("%Y-%m-%d")) #todays date
 ```
 
 Now we can view our 'activities' data for todays date. 
 
-```{python}
+```{python, eval=FALSE}
 activities = auth2_client.activities(date = today)
-activities
 ```
 Notice how the data is formatted in nested dictionary format, similar to json file format. Becuase of this format, we need to decompose the nested dictionaries to access our desired data.
 
 For example, if we want to access the total distance traveled we can do the following:
 
-```{python}
+```{python, eval=FALSE}
 activities = auth2_client.activities(date = today)['summary']
 totalDistance = activities['distances'][0]['distance']
 ```
 
 To access today's steps:
 
-```{python}
+```{python, eval=FALSE}
 steps = activities['steps']
 ```
 
@@ -94,7 +95,7 @@ Because we are now familiar with the structure of of data, we can begin processi
 
 To collect activities data:
 
-```{python}
+```{python, eval=FALSE}
 #gets all Activities Data
 def getActivities(myDate): 
     activities = auth2_client.activities(date = myDate)['summary']
@@ -115,7 +116,7 @@ def getActivities(myDate):
 
 To collect sleep data:
 
-```{python}
+```{python, eval=FALSE}
 #gets all Sleep data
 def getSleep(myDate): 
     nightSleep = auth2_client.sleep(date = myDate)['sleep']
@@ -132,7 +133,7 @@ def getSleep(myDate):
 
 To collect heart data:
 
-```{python}
+```{python, eval=FALSE}
 #gets all Heart Data
 def getHeart(myDate): 
         heartRates = auth2_client.intraday_time_series('activities/heart', base_date=myDate, detail_level='1sec')['activities-heart'][0]['value']
@@ -155,7 +156,7 @@ def getHeart(myDate):
 
 To collect weight data:
 
-```{python}
+```{python, eval=FALSE}
 #gets all Weight Data
 def getWeight(myDate):
     grabWeight = auth2_client.get_bodyweight(base_date = myDate)['weight']
@@ -170,7 +171,7 @@ def getWeight(myDate):
 
 Now that we have the functions to capture the data, we can process our data with a pandas data frame:
 
-```{python}
+```{python, eval=FALSE}
 #creates empty data frame
 biometricDF = pd.DataFrame(columns=["Date", "Steps", "Floors Climbed", "Total Miles", "Lightly Active Miles", 
                                     "Moderately Active Miles", "Very Active Miles", "Sedentary Minutes", 
@@ -181,7 +182,7 @@ biometricDF = pd.DataFrame(columns=["Date", "Steps", "Floors Climbed", "Total Mi
 
 Next, we will need a function to collect all the data togother and place it into a data frame:
 
-```{python}
+```{python, eval=FALSE}
 #adds data to data frame
 def getBiometricData(myDF, myDate):
     totalDistance, veryActiveDistance, moderatleyActiveDistance, lightlyActiveDistance, veryActiveMinutes, fairlyActiveMinutes, lightlyActiveMinutes, sedentaryMinutes, floorsClimbed, daySteps = getActivities(myDate)
@@ -200,16 +201,15 @@ def getBiometricData(myDF, myDate):
 
 And, finally, creating the database with todays data:
 
-```{python}
+```{python, eval=FALSE}
 biometricDF = getBiometricData(biometricDF, today) #append to data frame
-biometricDF
 ```
 
 ## Storing Data
-This process can be replicated each day so data must be stored appropriately. To start, we can export our data frame to a csv file and save the files to our current directory like this:
+This process can be replicated each day so data must be stored appropriately. To start, we can export our data frame to a csv file and save the files to a directory like this (I created a new folder named bioDates to store all my Data):
 
-```{python}
-biometricDF.to_csv('./' + today + '.csv')
+```{python, eval=FALSE}
+biometricDF.to_csv('./bioDates/' + today + '.csv')
 ```
 
 In the following chapters of this tutorial, we will learn how to concatenate the indiviudal daily csv files into one master file as well as storing the data into a a SQL database!

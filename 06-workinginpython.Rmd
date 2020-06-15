@@ -1,5 +1,5 @@
 ```{r}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, engine.path = list(python = '/Library/Frameworks/Python.framework/Versions/3.7/bin/python3'))
 ```
 
 # Working in Python
@@ -24,22 +24,20 @@ import requests
 from collections import defaultdict
 ```
 
-knitr::opts_chunk$set(echo = TRUE, engine.path = list(python = '/Library/Frameworks/Python.framework/Versions/3.7/bin/python3'))
-
 ## Reading Data, Conditionals, Loops
 
 The data for this tutorial can be found at https://raw.githubusercontent.com/fivethirtyeight/data/master/us-weather-history/KNYC.csv. The data is in CSV format meaning that each new value is seperated by a comma. Take a look at the raw data by visiting the link. It is data on weather patterns in NYC during parts of 2014 and 2015.
 
 Now that we know the format of the data, lets read it into our Notebook.
 
-```{python3}
+```{python}
 # open the file directly from the link
 file = requests.get("https://raw.githubusercontent.com/fivethirtyeight/data/master/us-weather-history/KNYC.csv").text
 ```
 
 Right now, the file is a string. To work with our data, we need to clean it and get it to a format for better analysis. To start, we will need to remove any unneccessary whitespace and create a list where each element is a new line.   
 
-```{python3}
+```{python}
 # strip() - method that removes whitespace 
 # split("\n") - method that returns a list of values broken by input characters from the input string.
 file = file.strip().split('\n')
@@ -47,7 +45,7 @@ file = file.strip().split('\n')
 
 Our file is now a list, where each element is one row (run print(file) if you would like to check). Our objective is to make each element of the list, a new list! We can easily do this using a for loop. A for loop will iterate over a sequence (i.e lists, dictionaries, tuples, sets) and perform itertive commands in the loop. Lets try to clean our data some more.
 
-```{python3}
+```{python}
 # for each element of the list, split the element by comma to make sublists
 for row in range(len(file)):
     file[row] = file[row].split(",")
@@ -55,7 +53,7 @@ for row in range(len(file)):
 
 Great, our data is cleaned! Let's view our file with a loop:
 
-```{python3}
+```{python}
 # Print the first five file lines of the data 
 for row in file[0:5]: 
   print(row)
@@ -63,7 +61,7 @@ for row in file[0:5]:
 
 Notice that the first line is the header line and the rest of the lines are data for the corresponding headers. Let's take a look at the maximum temperature on the first five days listed in the data set.
 
-```{python3}
+```{python}
 for row in file[0:6]:
   print("%-20s %s" % (row[0],row[3])) # simple string formatting techniques!
 ```
@@ -74,14 +72,14 @@ While our data is already organized well, more complex analysis with data in thi
 
 To start, let's create the list of headers:     
 
-```{python3}
+```{python}
 headers = file[0]
 headers
 ```
 
 Next, we will reformat our original list of data so that the headers are removed:
 
-```{python3}
+```{python}
 import datetime
 data = file[1:]               # remove header
 
@@ -95,7 +93,7 @@ for row in data:              # convert data from strings to floats
 
 Lastly, we will place our data into a pandas dataframe:
 
-```{python3}
+```{python}
 import pandas as pd
 df = pd.DataFrame(data, columns = headers)
 df.head()     # .head() is a way to view the first 5 rows of the dataframe
@@ -103,7 +101,7 @@ df.head()     # .head() is a way to view the first 5 rows of the dataframe
 
 Great! Now we can perfom analysis very easily on our data! For example, we can find some very valuable statistics with one simple command!
 
-```{python3}
+```{python}
 df.describe()
 ```
 
@@ -115,7 +113,7 @@ Pandas is a very poweful tool! More about pandas can be learned at https://panda
 Lastly, we can make a simple vizualization of our data using another package called Matplotlib. It is a
 plotting library for the python programming langauge.
 
-```{python3}
+```{python}
 import matplotlib.pyplot as plt
 fig, ax = plt.subplots(figsize=(12, 12))
 y =df['actual_max_temp']
