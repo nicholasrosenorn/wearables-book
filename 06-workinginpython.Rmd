@@ -1,5 +1,5 @@
 ```{r}
-knitr::opts_chunk$set(echo = TRUE, engine.path = list(python = '/Library/Frameworks/Python.framework/Versions/3.7/bin/python3'))
+knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Working in Python
