@@ -31,9 +31,7 @@ The 'touch' command will create a new file within the current working directory.
 Heres and example
 
 ```{bash}
-cd 
 pwd
-cd Desktop/
 mkdir Example
 cd Example/
 pwd
@@ -91,7 +89,7 @@ cat short.csv
 We can also view specifc columns from our data using 'cut'.
 
 ```{bash}
-cut -d, -f1 -f4 short.csv
+cut -d, -f1,4 short.csv
 ```
 
 Next, lets look at a specific row by using the 'grep' command to search by date.
