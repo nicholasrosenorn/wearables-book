@@ -107,9 +107,7 @@ We can create files that will perform the tasks within. Consider this:
 
 If we want to write some bash commands that will write the time of day to a file we can do something like
 
-```{bash}
-cd 
-cd Desktop/
+```{bash, eval=FALSE}
 touch myDateFile.txt
 date >>myDateFile.txt
 ```
@@ -118,9 +116,7 @@ running these commands each time we would like to write the date to the .txt fil
 
 First, we will create a new .sh file.
 
-```{bash}
-cd 
-cd Desktop/
+```{bash, eval=FALSE}
 touch myDateBash.sh
 ```
 
@@ -140,18 +136,14 @@ Next, we need to set the file permisions. Paste "chmod +x myDateBash.sh" into th
 
 Great! Now the setup is complete and we can run the bash script to write the current date and time to. myDateFile.txt like this:
 
-```{bash}
-cd 
-cd Desktop/
+```{bash, eval=FALSE}
 ./myDateBash.sh
 ```
 
 
 Lastly, to view the contents of the date text file:
 
-```{bash}
-cd
-cd Desktop/
+```{bash, eval=FALSE}
 cat myDateFile.txt
 ```
 
