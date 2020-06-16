@@ -1,8 +1,10 @@
 ```{r}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
 # Working in Python
+
+knitr::opts_chunk$set(echo = TRUE, engine.path = list(python = '/Library/Frameworks/Python.framework/Versions/3.7/bin/python3'))
+
 
 In this section, we will cover important computing fundamtentals using the python programming language. These fundamentals are transferrable between many programming languages so laying a strong foundation will prove benfeficial. 
 
