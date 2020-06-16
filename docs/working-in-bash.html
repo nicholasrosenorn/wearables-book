@@ -225,16 +225,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </tbody>
 </table>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">wget</span> https://raw.githubusercontent.com/fivethirtyeight/data/master/us-weather-history/KNYC.csv</code></pre></div>
-<pre><code>## --2020-06-16 17:22:08--  https://raw.githubusercontent.com/fivethirtyeight/data/master/us-weather-history/KNYC.csv
+<pre><code>## --2020-06-16 18:59:17--  https://raw.githubusercontent.com/fivethirtyeight/data/master/us-weather-history/KNYC.csv
 ## Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 151.101.208.133
 ## Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|151.101.208.133|:443... connected.
 ## HTTP request sent, awaiting response... 200 OK
 ## Length: 20604 (20K) [text/plain]
 ## Saving to: ‘KNYC.csv.4’
 ## 
-##      0K .......... ..........                                 100% 1.41M=0.01s
+##      0K .......... ..........                                 100% 1.84M=0.01s
 ## 
-## 2020-06-16 17:22:08 (1.41 MB/s) - ‘KNYC.csv.4’ saved [20604/20604]</code></pre>
+## 2020-06-16 18:59:17 (1.84 MB/s) - ‘KNYC.csv.4’ saved [20604/20604]</code></pre>
 <p>Now, we can view the first n rows of the data. In this example, we will view the first five lines</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">head</span> -n5 KNYC.csv</code></pre></div>
 <pre><code>## date,actual_mean_temp,actual_min_temp,actual_max_temp,average_min_temp,average_max_temp,record_min_temp,record_max_temp,record_min_temp_year,record_max_temp_year,actual_precipitation,average_precipitation,record_precipitation
