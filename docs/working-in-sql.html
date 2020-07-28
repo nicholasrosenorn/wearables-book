@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 11 Working in SQL | Wearables Book</title>
+  <meta name="description" content="This a tutorial based book covering many foundational data science skills and using applying these skills to a complete, end-to-end project." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 11 Working in SQL | Wearables Book" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This a tutorial based book covering many foundational data science skills and using applying these skills to a complete, end-to-end project." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 11 Working in SQL | Wearables Book" />
+  
+  <meta name="twitter:description" content="This a tutorial based book covering many foundational data science skills and using applying these skills to a complete, end-to-end project." />
+  
+
+<meta name="author" content="Merck and Data Mine Corporate Partnership Team" />
+
+
+<meta name="date" content="2020-07-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="tutorial-data-processing-with-bash.html"/>
+<link rel="next" href="tutorial-data-storage-with-sql.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Book Overview</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Data Science Overview</a></li>
+<li class="chapter" data-level="3" data-path="project-introduction.html"><a href="project-introduction.html"><i class="fa fa-check"></i><b>3</b> Project Introduction</a></li>
+<li class="chapter" data-level="4" data-path="using-git-and-github.html"><a href="using-git-and-github.html"><i class="fa fa-check"></i><b>4</b> Using Git and GitHub</a><ul>
+<li class="chapter" data-level="4.1" data-path="using-git-and-github.html"><a href="using-git-and-github.html#git-and-github-overview"><i class="fa fa-check"></i><b>4.1</b> Git and GitHub Overview</a></li>
+<li class="chapter" data-level="4.2" data-path="using-git-and-github.html"><a href="using-git-and-github.html#important-git-commands"><i class="fa fa-check"></i><b>4.2</b> Important Git Commands</a></li>
+<li class="chapter" data-level="4.3" data-path="using-git-and-github.html"><a href="using-git-and-github.html#git-and-github-simple-walkthrough"><i class="fa fa-check"></i><b>4.3</b> Git and GitHub Simple Walkthrough</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="fitbit-technology.html"><a href="fitbit-technology.html"><i class="fa fa-check"></i><b>5</b> Fitbit Technology</a></li>
+<li class="chapter" data-level="6" data-path="dependencies.html"><a href="dependencies.html"><i class="fa fa-check"></i><b>6</b> Dependencies</a></li>
+<li class="chapter" data-level="7" data-path="working-in-python.html"><a href="working-in-python.html"><i class="fa fa-check"></i><b>7</b> Working in Python</a><ul>
+<li class="chapter" data-level="7.1" data-path="working-in-python.html"><a href="working-in-python.html#python-introduction"><i class="fa fa-check"></i><b>7.1</b> Python Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="working-in-python.html"><a href="working-in-python.html#reading-data-conditionals-loops"><i class="fa fa-check"></i><b>7.2</b> Reading Data, Conditionals, Loops</a></li>
+<li class="chapter" data-level="7.3" data-path="working-in-python.html"><a href="working-in-python.html#pandas-and-numpy"><i class="fa fa-check"></i><b>7.3</b> Pandas and Numpy</a></li>
+<li class="chapter" data-level="7.4" data-path="working-in-python.html"><a href="working-in-python.html#vizualizations-with-matplotlib"><i class="fa fa-check"></i><b>7.4</b> Vizualizations with Matplotlib</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="tutorial-data-capture-in-python.html"><a href="tutorial-data-capture-in-python.html"><i class="fa fa-check"></i><b>8</b> Tutorial - Data Capture in Python</a><ul>
+<li class="chapter" data-level="8.1" data-path="tutorial-data-capture-in-python.html"><a href="tutorial-data-capture-in-python.html#getting-started"><i class="fa fa-check"></i><b>8.1</b> Getting Started</a></li>
+<li class="chapter" data-level="8.2" data-path="tutorial-data-capture-in-python.html"><a href="tutorial-data-capture-in-python.html#imports"><i class="fa fa-check"></i><b>8.2</b> Imports</a></li>
+<li class="chapter" data-level="8.3" data-path="tutorial-data-capture-in-python.html"><a href="tutorial-data-capture-in-python.html#authentication"><i class="fa fa-check"></i><b>8.3</b> Authentication</a></li>
+<li class="chapter" data-level="8.4" data-path="tutorial-data-capture-in-python.html"><a href="tutorial-data-capture-in-python.html#accessing-data"><i class="fa fa-check"></i><b>8.4</b> Accessing Data</a></li>
+<li class="chapter" data-level="8.5" data-path="tutorial-data-capture-in-python.html"><a href="tutorial-data-capture-in-python.html#processing-data"><i class="fa fa-check"></i><b>8.5</b> Processing Data</a></li>
+<li class="chapter" data-level="8.6" data-path="tutorial-data-capture-in-python.html"><a href="tutorial-data-capture-in-python.html#storing-data"><i class="fa fa-check"></i><b>8.6</b> Storing Data</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="working-in-bash.html"><a href="working-in-bash.html"><i class="fa fa-check"></i><b>9</b> Working in Bash</a><ul>
+<li class="chapter" data-level="9.1" data-path="working-in-bash.html"><a href="working-in-bash.html#introduction"><i class="fa fa-check"></i><b>9.1</b> Introduction</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="working-in-bash.html"><a href="working-in-bash.html#basic-commands"><i class="fa fa-check"></i><b>9.1.1</b> Basic Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="working-in-bash.html"><a href="working-in-bash.html#working-with-data-using-bash"><i class="fa fa-check"></i><b>9.2</b> Working with Data using Bash</a></li>
+<li class="chapter" data-level="9.3" data-path="working-in-bash.html"><a href="working-in-bash.html#bash-scripts"><i class="fa fa-check"></i><b>9.3</b> Bash Scripts</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="tutorial-data-processing-with-bash.html"><a href="tutorial-data-processing-with-bash.html"><i class="fa fa-check"></i><b>10</b> Tutorial - Data Processing with Bash</a></li>
+<li class="chapter" data-level="11" data-path="working-in-sql.html"><a href="working-in-sql.html"><i class="fa fa-check"></i><b>11</b> Working in SQL</a><ul>
+<li class="chapter" data-level="11.1" data-path="working-in-sql.html"><a href="working-in-sql.html#sql-fundamentals"><i class="fa fa-check"></i><b>11.1</b> SQL Fundamentals</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="working-in-sql.html"><a href="working-in-sql.html#select-statement"><i class="fa fa-check"></i><b>11.1.1</b> SELECT statement</a></li>
+<li class="chapter" data-level="11.1.2" data-path="working-in-sql.html"><a href="working-in-sql.html#where-clause"><i class="fa fa-check"></i><b>11.1.2</b> WHERE clause</a></li>
+<li class="chapter" data-level="11.1.3" data-path="working-in-sql.html"><a href="working-in-sql.html#and-operator"><i class="fa fa-check"></i><b>11.1.3</b> AND operator</a></li>
+<li class="chapter" data-level="11.1.4" data-path="working-in-sql.html"><a href="working-in-sql.html#or-operator"><i class="fa fa-check"></i><b>11.1.4</b> OR operator</a></li>
+<li class="chapter" data-level="11.1.5" data-path="working-in-sql.html"><a href="working-in-sql.html#order-by-keyword"><i class="fa fa-check"></i><b>11.1.5</b> ORDER BY keyword</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="tutorial-data-storage-with-sql.html"><a href="tutorial-data-storage-with-sql.html"><i class="fa fa-check"></i><b>12</b> Tutorial - Data Storage with SQL</a><ul>
+<li class="chapter" data-level="12.1" data-path="tutorial-data-storage-with-sql.html"><a href="tutorial-data-storage-with-sql.html#create-a-new-database"><i class="fa fa-check"></i><b>12.1</b> Create a new database</a></li>
+<li class="chapter" data-level="12.2" data-path="tutorial-data-storage-with-sql.html"><a href="tutorial-data-storage-with-sql.html#create-a-new-table"><i class="fa fa-check"></i><b>12.2</b> Create a new table</a></li>
+<li class="chapter" data-level="12.3" data-path="tutorial-data-storage-with-sql.html"><a href="tutorial-data-storage-with-sql.html#import-data-to-table-from-csv"><i class="fa fa-check"></i><b>12.3</b> Import Data to table from CSV</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="conlusion-and-more-resources.html"><a href="conlusion-and-more-resources.html"><i class="fa fa-check"></i><b>13</b> Conlusion and More Resources</a><ul>
+<li class="chapter" data-level="13.1" data-path="conlusion-and-more-resources.html"><a href="conlusion-and-more-resources.html#front-end-development-resources"><i class="fa fa-check"></i><b>13.1</b> Front End Development Resources</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="conlusion-and-more-resources.html"><a href="conlusion-and-more-resources.html#expo"><i class="fa fa-check"></i><b>13.1.1</b> Expo</a></li>
+<li class="chapter" data-level="13.1.2" data-path="conlusion-and-more-resources.html"><a href="conlusion-and-more-resources.html#react-native"><i class="fa fa-check"></i><b>13.1.2</b> React Native</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="conlusion-and-more-resources.html"><a href="conlusion-and-more-resources.html#back-end-development-resources"><i class="fa fa-check"></i><b>13.2</b> Back End Development Resources</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="conlusion-and-more-resources.html"><a href="conlusion-and-more-resources.html#flask"><i class="fa fa-check"></i><b>13.2.1</b> Flask</a></li>
+<li class="chapter" data-level="13.2.2" data-path="conlusion-and-more-resources.html"><a href="conlusion-and-more-resources.html#postman"><i class="fa fa-check"></i><b>13.2.2</b> Postman</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Wearables Book</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="working-in-sql" class="section level1">
+<h1><span class="header-section-number">Chapter 11</span> Working in SQL</h1>
+<p>In this section, we will cover and practive the basic skills associated with SQL.</p>
+<p>SQL stands for structered query langauage and is a language that allows us to access and manipulate relational databases. It is common pratice to have structured data stored in databases, and SQL derives information of the data through queries.</p>
+<div id="sql-fundamentals" class="section level2">
+<h2><span class="header-section-number">11.1</span> SQL Fundamentals</h2>
+<div id="select-statement" class="section level3">
+<h3><span class="header-section-number">11.1.1</span> SELECT statement</h3>
+<p>The SELECT statement is a common start to many queries. It is used when retrieving data from a table. The returned data will be in a table format.</p>
+<p>The FROM statement denotes from which table to perform the query. In each of these example, the table is called 'nyc' because the data is New York City weather data.</p>
+<p>The * denotes to select all columns from the table.</p>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> * <span class="kw">FROM</span> nyc</code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-66">Table 11.1: </span>Displaying records 1 - 10</caption>
+<thead>
+<tr class="header">
+<th align="left">date</th>
+<th align="right">actual_mean_temp</th>
+<th align="right">actual_min_temp</th>
+<th align="right">actual_max_temp</th>
+<th align="right">average_min_temp</th>
+<th align="right">average_max_temp</th>
+<th align="right">record_min_temp</th>
+<th align="right">record_max_temp</th>
+<th align="right">record_min_temp_year</th>
+<th align="right">record_max_temp_year</th>
+<th align="right">actual_precipitation</th>
+<th align="right">average_precipitation</th>
+<th align="right">record_precipitation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2014-7-1</td>
+<td align="right">81</td>
+<td align="right">72</td>
+<td align="right">89</td>
+<td align="right">68</td>
+<td align="right">83</td>
+<td align="right">52</td>
+<td align="right">100</td>
+<td align="right">1943</td>
+<td align="right">1901</td>
+<td align="right">0.00</td>
+<td align="right">0.12</td>
+<td align="right">2.17</td>
+</tr>
+<tr class="even">
+<td align="left">2014-7-2</td>
+<td align="right">82</td>
+<td align="right">72</td>
+<td align="right">91</td>
+<td align="right">68</td>
+<td align="right">83</td>
+<td align="right">56</td>
+<td align="right">100</td>
+<td align="right">2001</td>
+<td align="right">1966</td>
+<td align="right">0.96</td>
+<td align="right">0.13</td>
+<td align="right">1.79</td>
+</tr>
+<tr class="odd">
+<td align="left">2014-7-3</td>
+<td align="right">78</td>
+<td align="right">69</td>
+<td align="right">87</td>
+<td align="right">68</td>
+<td align="right">83</td>
+<td align="right">54</td>
+<td align="right">103</td>
+<td align="right">1933</td>
+<td align="right">1966</td>
+<td align="right">1.78</td>
+<td align="right">0.12</td>
+<td align="right">2.80</td>
+</tr>
+<tr class="even">
+<td align="left">2014-7-4</td>
+<td align="right">70</td>
+<td align="right">65</td>
+<td align="right">74</td>
+<td align="right">68</td>
+<td align="right">84</td>
+<td align="right">55</td>
+<td align="right">102</td>
+<td align="right">1986</td>
+<td align="right">1949</td>
+<td align="right">0.14</td>
+<td align="right">0.13</td>
+<td align="right">1.76</td>
+</tr>
+<tr class="odd">
+<td align="left">2014-7-5</td>
+<td align="right">72</td>
+<td align="right">63</td>
+<td align="right">81</td>
+<td align="right">68</td>
+<td align="right">84</td>
+<td align="right">53</td>
+<td align="right">101</td>
+<td align="right">1979</td>
+<td align="right">1999</td>
+<td align="right">0.00</td>
+<td align="right">0.12</td>
+<td align="right">3.07</td>
+</tr>
+<tr class="even">
+<td align="left">2014-7-6</td>
+<td align="right">75</td>
+<td align="right">66</td>
+<td align="right">84</td>
+<td align="right">68</td>
+<td align="right">84</td>
+<td align="right">54</td>
+<td align="right">103</td>
+<td align="right">1979</td>
+<td align="right">2010</td>
+<td align="right">0.00</td>
+<td align="right">0.13</td>
+<td align="right">1.97</td>
+</tr>
+<tr class="odd">
+<td align="left">2014-7-7</td>
+<td align="right">81</td>
+<td align="right">72</td>
+<td align="right">90</td>
+<td align="right">68</td>
+<td align="right">84</td>
+<td align="right">56</td>
+<td align="right">100</td>
+<td align="right">1914</td>
+<td align="right">2010</td>
+<td align="right">0.04</td>
+<td align="right">0.13</td>
+<td align="right">3.13</td>
+</tr>
+<tr class="even">
+<td align="left">2014-7-8</td>
+<td align="right">81</td>
+<td align="right">71</td>
+<td align="right">91</td>
+<td align="right">69</td>
+<td align="right">84</td>
+<td align="right">56</td>
+<td align="right">100</td>
+<td align="right">1894</td>
+<td align="right">1993</td>
+<td align="right">0.39</td>
+<td align="right">0.14</td>
+<td align="right">1.80</td>
+</tr>
+<tr class="odd">
+<td align="left">2014-7-9</td>
+<td align="right">80</td>
+<td align="right">71</td>
+<td align="right">88</td>
+<td align="right">69</td>
+<td align="right">84</td>
+<td align="right">54</td>
+<td align="right">106</td>
+<td align="right">1963</td>
+<td align="right">1936</td>
+<td align="right">0.09</td>
+<td align="right">0.14</td>
+<td align="right">1.09</td>
+</tr>
+<tr class="even">
+<td align="left">2014-7-10</td>
+<td align="right">78</td>
+<td align="right">72</td>
+<td align="right">83</td>
+<td align="right">69</td>
+<td align="right">84</td>
+<td align="right">55</td>
+<td align="right">102</td>
+<td align="right">1890</td>
+<td align="right">1993</td>
+<td align="right">0.00</td>
+<td align="right">0.15</td>
+<td align="right">1.79</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>We can also denote specific columns to select by using the column names.</p>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> <span class="dt">date</span>, actual_max_temp <span class="kw">FROM</span> nyc</code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-67">Table 11.2: </span>Displaying records 1 - 10</caption>
+<thead>
+<tr class="header">
+<th align="left">date</th>
+<th align="right">actual_max_temp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2014-7-1</td>
+<td align="right">89</td>
+</tr>
+<tr class="even">
+<td align="left">2014-7-2</td>
+<td align="right">91</td>
+</tr>
+<tr class="odd">
+<td align="left">2014-7-3</td>
+<td align="right">87</td>
+</tr>
+<tr class="even">
+<td align="left">2014-7-4</td>
+<td align="right">74</td>
+</tr>
+<tr class="odd">
+<td align="left">2014-7-5</td>
+<td align="right">81</td>
+</tr>
+<tr class="even">
+<td align="left">2014-7-6</td>
+<td align="right">84</td>
+</tr>
+<tr class="odd">
+<td align="left">2014-7-7</td>
+<td align="right">90</td>
+</tr>
+<tr class="even">
+<td align="left">2014-7-8</td>
+<td align="right">91</td>
+</tr>
+<tr class="odd">
+<td align="left">2014-7-9</td>
+<td align="right">88</td>
+</tr>
+<tr class="even">
+<td align="left">2014-7-10</td>
+<td align="right">83</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="where-clause" class="section level3">
+<h3><span class="header-section-number">11.1.2</span> WHERE clause</h3>
+<p>To perfrom conditional queries, we can use the WHERE clause. The WHERE clause acts similar to an if statement by denoting which conditions must be upheld in order for the row to be selected in the query.</p>
+<p>For example, we can find the dates on which the maximum temperature was greater than 75 degrees:</p>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> <span class="dt">date</span>, actual_max_temp <span class="kw">FROM</span> nyc <span class="kw">WHERE</span> actual_max_temp &gt; <span class="dv">75</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-68">Table 11.3: </span>Displaying records 1 - 10</caption>
+<thead>
+<tr class="header">
+<th align="left">date</th>
+<th align="right">actual_max_temp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2014-7-1</td>
+<td align="right">89</td>
+</tr>
+<tr class="even">
+<td align="left">2014-7-2</td>
+<td align="right">91</td>
+</tr>
+<tr class="odd">
+<td align="left">2014-7-3</td>
+<td align="right">87</td>
+</tr>
+<tr class="even">
+<td align="left">2014-7-5</td>
+<td align="right">81</td>
+</tr>
+<tr class="odd">
+<td align="left">2014-7-6</td>
+<td align="right">84</td>
+</tr>
+<tr class="even">
+<td align="left">2014-7-7</td>
+<td align="right">90</td>
+</tr>
+<tr class="odd">
+<td align="left">2014-7-8</td>
+<td align="right">91</td>
+</tr>
+<tr class="even">
+<td align="left">2014-7-9</td>
+<td align="right">88</td>
+</tr>
+<tr class="odd">
+<td align="left">2014-7-10</td>
+<td align="right">83</td>
+</tr>
+<tr class="even">
+<td align="left">2014-7-11</td>
+<td align="right">86</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="and-operator" class="section level3">
+<h3><span class="header-section-number">11.1.3</span> AND operator</h3>
+<p>Often times, more than one conditional statement is neccessary when writing queries. The AND clause allows for more than one conditional statement that must eb uphelp for the row to be selected.</p>
+<p>Let's Find the dates on which the maximum temperature was greater than 75 degrees but also less than or equal to 90 degrees:</p>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> <span class="dt">date</span>, actual_max_temp <span class="kw">FROM</span> nyc <span class="kw">WHERE</span> actual_max_temp &gt; <span class="dv">75</span> <span class="kw">AND</span> actual_max_temp &lt;= <span class="dv">90</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-69">Table 11.4: </span>Displaying records 1 - 10</caption>
+<thead>
+<tr class="header">
+<th align="left">date</th>
+<th align="right">actual_max_temp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2014-7-1</td>
+<td align="right">89</td>
+</tr>
+<tr class="even">
+<td align="left">2014-7-3</td>
+<td align="right">87</td>
+</tr>
+<tr class="odd">
+<td align="left">2014-7-5</td>
+<td align="right">81</td>
+</tr>
+<tr class="even">
+<td align="left">2014-7-6</td>
+<td align="right">84</td>
+</tr>
+<tr class="odd">
+<td align="left">2014-7-7</td>
+<td align="right">90</td>
+</tr>
+<tr class="even">
+<td align="left">2014-7-9</td>
+<td align="right">88</td>
+</tr>
+<tr class="odd">
+<td align="left">2014-7-10</td>
+<td align="right">83</td>
+</tr>
+<tr class="even">
+<td align="left">2014-7-11</td>
+<td align="right">86</td>
+</tr>
+<tr class="odd">
+<td align="left">2014-7-12</td>
+<td align="right">85</td>
+</tr>
+<tr class="even">
+<td align="left">2014-7-13</td>
+<td align="right">83</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="or-operator" class="section level3">
+<h3><span class="header-section-number">11.1.4</span> OR operator</h3>
+<p>Similiar to the AND operator, the OR operator assists with conditional statements. The OR operator will allows for the selection of rows that satisfy at least one of the provided conditions</p>
+<p>To select the days where maximum temperature equaled 75 or 90, we can do the following:</p>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> <span class="dt">date</span>, actual_max_temp <span class="kw">FROM</span> nyc <span class="kw">WHERE</span> actual_max_temp = <span class="dv">75</span> <span class="kw">OR</span> actual_max_temp = <span class="dv">90</span></code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-70">Table 11.5: </span>Displaying records 1 - 10</caption>
+<thead>
+<tr class="header">
+<th align="left">date</th>
+<th align="right">actual_max_temp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2014-7-7</td>
+<td align="right">90</td>
+</tr>
+<tr class="even">
+<td align="left">2014-8-5</td>
+<td align="right">90</td>
+</tr>
+<tr class="odd">
+<td align="left">2014-8-27</td>
+<td align="right">90</td>
+</tr>
+<tr class="even">
+<td align="left">2014-8-31</td>
+<td align="right">90</td>
+</tr>
+<tr class="odd">
+<td align="left">2014-9-8</td>
+<td align="right">75</td>
+</tr>
+<tr class="even">
+<td align="left">2014-9-20</td>
+<td align="right">75</td>
+</tr>
+<tr class="odd">
+<td align="left">2014-9-21</td>
+<td align="right">75</td>
+</tr>
+<tr class="even">
+<td align="left">2015-5-15</td>
+<td align="right">75</td>
+</tr>
+<tr class="odd">
+<td align="left">2015-5-16</td>
+<td align="right">75</td>
+</tr>
+<tr class="even">
+<td align="left">2015-5-18</td>
+<td align="right">75</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="order-by-keyword" class="section level3">
+<h3><span class="header-section-number">11.1.5</span> ORDER BY keyword</h3>
+<p>SQL offers a great keyword for sorting queries. The ORDER BY keywword will sort the rows by the provided column in the query followed by another keyword- most commonly DESC or ASC. DESC will order the rows from greatest to least and ASC does the opposite.</p>
+<p>For example, we can sort max temperature from least to greatest:</p>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> <span class="dt">date</span>, actual_max_temp <span class="kw">FROM</span> nyc <span class="kw">ORDER</span> <span class="kw">BY</span> actual_max_temp <span class="kw">ASC</span>;</code></pre></div>
+<div class="knitsql-table">
+<table>
+<caption><span id="tab:unnamed-chunk-71">Table 11.6: </span>Displaying records 1 - 10</caption>
+<thead>
+<tr class="header">
+<th align="left">date</th>
+<th align="right">actual_max_temp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2015-2-20</td>
+<td align="right">19</td>
+</tr>
+<tr class="even">
+<td align="left">2015-1-8</td>
+<td align="right">21</td>
+</tr>
+<tr class="odd">
+<td align="left">2015-2-13</td>
+<td align="right">21</td>
+</tr>
+<tr class="even">
+<td align="left">2015-2-16</td>
+<td align="right">21</td>
+</tr>
+<tr class="odd">
+<td align="left">2015-1-6</td>
+<td align="right">22</td>
+</tr>
+<tr class="even">
+<td align="left">2015-1-7</td>
+<td align="right">23</td>
+</tr>
+<tr class="odd">
+<td align="left">2015-1-10</td>
+<td align="right">23</td>
+</tr>
+<tr class="even">
+<td align="left">2015-2-24</td>
+<td align="right">24</td>
+</tr>
+<tr class="odd">
+<td align="left">2015-2-15</td>
+<td align="right">25</td>
+</tr>
+<tr class="even">
+<td align="left">2015-1-31</td>
+<td align="right">26</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="tutorial-data-processing-with-bash.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tutorial-data-storage-with-sql.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/10-workinginsql.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

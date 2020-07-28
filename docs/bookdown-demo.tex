@@ -119,7 +119,7 @@
 
 \title{Wearables Book}
 \author{Merck and Data Mine Corporate Partnership Team}
-\date{2020-06-16}
+\date{2020-07-28}
 
 \begin{document}
 \maketitle
@@ -183,7 +183,232 @@ The medicinal benefits are great with a tool like this. It is through
 simple computing and foundational data science topics that a pipeline
 and tool can be engineered.
 
-\chapter{Merck Technology}\label{merck-technology}
+\chapter{Using Git and GitHub}\label{using-git-and-github}
+
+\section{Git and GitHub Overview}\label{git-and-github-overview}
+
+Git is a distributed version-control system for tracking changes in
+source code during software development. It is designed for coordinating
+work among programmers, but it can be used to track changes in any set
+of files. Its goals include speed, data integrity, and support for
+distributed, non-linear workflows.
+
+GitHub serves as a web-based interface for Git while also providing many
+otehr valuable features for version control and collaboration.
+
+Downloading Git can be done at \url{https://git-scm.com/downloads}.
+GitHub is free to create to create an account at
+\url{https://github.com/}.
+
+During this section, we will work through the basics of Git and GitHub!
+
+\section{Important Git Commands}\label{important-git-commands}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{git}\NormalTok{ clone                       # clone a repository into a new directory}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{git}\NormalTok{ init                        # initialize local directory as a git repository}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{git}\NormalTok{ add .                       # add files to local repository}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{git}\NormalTok{ commit- m “commit message”  # commit files you staged in local repository}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{git}\NormalTok{ remote add origin URL           # sets remote location of Github repository with URL}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{git}\NormalTok{ remote -v                         # verifies remote location}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{git}\NormalTok{ push                                  # pushes changes from local repository to remote repository }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{git}\NormalTok{ branch                            # check which branch you are currently working on}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{git}\NormalTok{ checkout branch-name            # change branches}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{git}\NormalTok{ checkout -b branch-name     # create a new branch if branch-name does not exist }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{git}\NormalTok{ status                            # displays state of working directory and changed states}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{git}\NormalTok{ pull                                  # update local version of a repository from remote repository}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Git and GitHub Simple
+Walkthrough}\label{git-and-github-simple-walkthrough}
+
+Let's learn some basics of Git and GitHub through an example.
+
+To start, make a new directory and cd into it.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mkdir}\NormalTok{ myGitTutorial}
+
+\BuiltInTok{cd}\NormalTok{ myGitTutorial}
+\end{Highlighting}
+\end{Shaded}
+
+Now, create a readme file and add a description within our new
+directory.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{touch}\NormalTok{ readme.md}
+
+\BuiltInTok{echo}\NormalTok{ this is the read me for my Git tutorial }\OperatorTok{>}\NormalTok{ readme.md}
+\end{Highlighting}
+\end{Shaded}
+
+Initialize the Git repository.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{git}\NormalTok{ init}
+\end{Highlighting}
+\end{Shaded}
+
+Add and commit files to local git repository.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{git}\NormalTok{ add .}
+
+\FunctionTok{git}\NormalTok{ commit -m “initial commit.”}
+\end{Highlighting}
+\end{Shaded}
+
+Now, if neeeded, create a GitHub account and then create a new
+repository.
+
+\includegraphics[width=0.40000\textwidth]{images/create new git repo.png}
+
+Back in command line, set remote location of repository
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{git}\NormalTok{ remote add origin link/of/your/GitHub/repo}
+\end{Highlighting}
+\end{Shaded}
+
+Now, we can push contents to the remote repository on GitHub.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{git}\NormalTok{ push -u origin master}
+\end{Highlighting}
+\end{Shaded}
+
+The repository is now set up and can be viewed in Github! You will see
+the readme file we created in the repo.
+
+\includegraphics[width=0.40000\textwidth]{images/github view.png}
+
+Next, we can create a new branch.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{git}\NormalTok{ checkout -b tutorial-branch}
+\end{Highlighting}
+\end{Shaded}
+
+Make a new file in the tutorial branch
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{touch}\NormalTok{ branch.txt}
+\BuiltInTok{echo}\NormalTok{ this is for the tutorial branch }\OperatorTok{>}\NormalTok{ branch.txt}
+\end{Highlighting}
+\end{Shaded}
+
+Stage and commit files to branch.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{git}\NormalTok{ add .}
+
+\FunctionTok{git}\NormalTok{ commit -m }\StringTok{"txt file to branch"}
+\end{Highlighting}
+\end{Shaded}
+
+Push staged files to branch.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{git}\NormalTok{ push --set-upstream origin tutorial-branch}
+\end{Highlighting}
+\end{Shaded}
+
+When we return to github we will notice that there are two branches!
+
+\includegraphics[width=0.40000\textwidth]{images/branch.png}
+
+Notice that the master branch does not have the newly created branch.txt
+file. If we navigate to tutorial-branch, we will see the branch.txt
+file!
+
+\includegraphics[width=0.40000\textwidth]{images/commit.png}
+
+Let's update the master branch with the added files from the branch. To
+update the master branch, we will need to create a pull request.
+
+Click the green button that says `compare and pull request'.
+
+\includegraphics[width=0.40000\textwidth]{images/pull.png}
+
+Then, click `create pull request'. Notice how there are no conflicts
+with the master branch!
+
+\includegraphics[width=0.40000\textwidth]{images/merge.png}
+
+Now click `Merge pull request' and then `confirm merge'.
+
+\includegraphics[width=0.40000\textwidth]{images/final.png}
+
+Once the merge is done processing we can return to the master branch and
+we will see that branch.txt is now available on the master!
 
 \chapter{Fitbit Technology}\label{fitbit-technology}
 
@@ -247,20 +472,14 @@ look similar to the image below.
 \includegraphics[width=0.80000\textwidth]{images/anacondanav.png}
 
 On the left side navigation bar, click on evironments and then search
-for `cherrypy'.
+for `cherrypy'. Check the box next to cherrypy and click the green apply
+button.
 
------ Open Jupyter notebook description ------
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{knitr}\OperatorTok{::}\NormalTok{opts_chunk}\OperatorTok{$}\KeywordTok{set}\NormalTok{(}\DataTypeTok{echo =} \OtherTok{TRUE}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+After, you be able to use the different applications offered through
+anaconda. Jupyter notebook is great for writing programs in Python and
+R.
 
 \chapter{Working in Python}\label{working-in-python}
-
-knitr::opts\_chunk\$set(echo = TRUE, engine.path = list(python =
-`/Library/Frameworks/Python.framework/Versions/3.7/bin/python3'))
 
 In this section, we will cover important computing fundamtentals using
 the python programming language. These fundamentals are transferrable
@@ -483,7 +702,7 @@ programming langauge.
 \end{Shaded}
 
 \begin{verbatim}
-## [Text(0, 0.5, 'Max Temp (F)'), Text(0.5, 0, 'Date'), Text(0.5, 1.0, 'Max Temperarure in New York City')]
+## [Text(0.5, 0, 'Date'), Text(0, 0.5, 'Max Temp (F)'), Text(0.5, 1.0, 'Max Temperarure in New York City')]
 \end{verbatim}
 
 \begin{Shaded}
@@ -493,7 +712,7 @@ programming langauge.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-12-1.pdf}
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-34-1.pdf}
 
 Matplot has much more funtionality than this simple example. Refer to
 the documentation at \url{https://matplotlib.org/3.2.1/contents.html}
@@ -884,16 +1103,16 @@ packages on macOS.\strut
 \end{Shaded}
 
 \begin{verbatim}
-## --2020-06-16 18:59:19--  https://raw.githubusercontent.com/fivethirtyeight/data/master/us-weather-history/KNYC.csv
+## --2020-07-28 16:59:10--  https://raw.githubusercontent.com/fivethirtyeight/data/master/us-weather-history/KNYC.csv
 ## Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 151.101.208.133
 ## Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|151.101.208.133|:443... connected.
 ## HTTP request sent, awaiting response... 200 OK
 ## Length: 20604 (20K) [text/plain]
 ## Saving to: ‘KNYC.csv.5’
 ## 
-##      0K .......... ..........                                 100% 1.83M=0.01s
+##      0K .......... ..........                                 100% 2.64M=0.007s
 ## 
-## 2020-06-16 18:59:19 (1.83 MB/s) - ‘KNYC.csv.5’ saved [20604/20604]
+## 2020-07-28 16:59:10 (2.64 MB/s) - ‘KNYC.csv.5’ saved [20604/20604]
 \end{verbatim}
 
 Now, we can view the first n rows of the data. In this example, we will
@@ -1102,6 +1321,417 @@ master .csv. This can be done with the following line of code:
 
 With this line, we concatenate all csv files into one master csv file
 called bioFinal.csv.
+
+\chapter{Working in SQL}\label{working-in-sql}
+
+In this section, we will cover and practive the basic skills associated
+with SQL.
+
+SQL stands for structered query langauage and is a language that allows
+us to access and manipulate relational databases. It is common pratice
+to have structured data stored in databases, and SQL derives information
+of the data through queries.
+
+\section{SQL Fundamentals}\label{sql-fundamentals}
+
+\subsection{SELECT statement}\label{select-statement}
+
+The SELECT statement is a common start to many queries. It is used when
+retrieving data from a table. The returned data will be in a table
+format.
+
+The FROM statement denotes from which table to perform the query. In
+each of these example, the table is called `nyc' because the data is New
+York City weather data.
+
+The * denotes to select all columns from the table.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT}\NormalTok{ * }\KeywordTok{FROM}\NormalTok{ nyc}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-66}Displaying records 1 - 10}
+\centering
+\begin{tabular}[t]{l|r|r|r|r|r|r|r|r|r|r|r|r}
+\hline
+date & actual\_mean\_temp & actual\_min\_temp & actual\_max\_temp & average\_min\_temp & average\_max\_temp & record\_min\_temp & record\_max\_temp & record\_min\_temp\_year & record\_max\_temp\_year & actual\_precipitation & average\_precipitation & record\_precipitation\\
+\hline
+2014-7-1 & 81 & 72 & 89 & 68 & 83 & 52 & 100 & 1943 & 1901 & 0.00 & 0.12 & 2.17\\
+\hline
+2014-7-2 & 82 & 72 & 91 & 68 & 83 & 56 & 100 & 2001 & 1966 & 0.96 & 0.13 & 1.79\\
+\hline
+2014-7-3 & 78 & 69 & 87 & 68 & 83 & 54 & 103 & 1933 & 1966 & 1.78 & 0.12 & 2.80\\
+\hline
+2014-7-4 & 70 & 65 & 74 & 68 & 84 & 55 & 102 & 1986 & 1949 & 0.14 & 0.13 & 1.76\\
+\hline
+2014-7-5 & 72 & 63 & 81 & 68 & 84 & 53 & 101 & 1979 & 1999 & 0.00 & 0.12 & 3.07\\
+\hline
+2014-7-6 & 75 & 66 & 84 & 68 & 84 & 54 & 103 & 1979 & 2010 & 0.00 & 0.13 & 1.97\\
+\hline
+2014-7-7 & 81 & 72 & 90 & 68 & 84 & 56 & 100 & 1914 & 2010 & 0.04 & 0.13 & 3.13\\
+\hline
+2014-7-8 & 81 & 71 & 91 & 69 & 84 & 56 & 100 & 1894 & 1993 & 0.39 & 0.14 & 1.80\\
+\hline
+2014-7-9 & 80 & 71 & 88 & 69 & 84 & 54 & 106 & 1963 & 1936 & 0.09 & 0.14 & 1.09\\
+\hline
+2014-7-10 & 78 & 72 & 83 & 69 & 84 & 55 & 102 & 1890 & 1993 & 0.00 & 0.15 & 1.79\\
+\hline
+\end{tabular}
+\end{table}
+
+We can also denote specific columns to select by using the column names.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT} \DataTypeTok{date}\NormalTok{, actual_max_temp }\KeywordTok{FROM}\NormalTok{ nyc}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-67}Displaying records 1 - 10}
+\centering
+\begin{tabular}[t]{l|r}
+\hline
+date & actual\_max\_temp\\
+\hline
+2014-7-1 & 89\\
+\hline
+2014-7-2 & 91\\
+\hline
+2014-7-3 & 87\\
+\hline
+2014-7-4 & 74\\
+\hline
+2014-7-5 & 81\\
+\hline
+2014-7-6 & 84\\
+\hline
+2014-7-7 & 90\\
+\hline
+2014-7-8 & 91\\
+\hline
+2014-7-9 & 88\\
+\hline
+2014-7-10 & 83\\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{WHERE clause}\label{where-clause}
+
+To perfrom conditional queries, we can use the WHERE clause. The WHERE
+clause acts similar to an if statement by denoting which conditions must
+be upheld in order for the row to be selected in the query.
+
+For example, we can find the dates on which the maximum temperature was
+greater than 75 degrees:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT} \DataTypeTok{date}\NormalTok{, actual_max_temp }\KeywordTok{FROM}\NormalTok{ nyc }\KeywordTok{WHERE}\NormalTok{ actual_max_temp > }\DecValTok{75}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-68}Displaying records 1 - 10}
+\centering
+\begin{tabular}[t]{l|r}
+\hline
+date & actual\_max\_temp\\
+\hline
+2014-7-1 & 89\\
+\hline
+2014-7-2 & 91\\
+\hline
+2014-7-3 & 87\\
+\hline
+2014-7-5 & 81\\
+\hline
+2014-7-6 & 84\\
+\hline
+2014-7-7 & 90\\
+\hline
+2014-7-8 & 91\\
+\hline
+2014-7-9 & 88\\
+\hline
+2014-7-10 & 83\\
+\hline
+2014-7-11 & 86\\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{AND operator}\label{and-operator}
+
+Often times, more than one conditional statement is neccessary when
+writing queries. The AND clause allows for more than one conditional
+statement that must eb uphelp for the row to be selected.
+
+Let's Find the dates on which the maximum temperature was greater than
+75 degrees but also less than or equal to 90 degrees:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT} \DataTypeTok{date}\NormalTok{, actual_max_temp }\KeywordTok{FROM}\NormalTok{ nyc }\KeywordTok{WHERE}\NormalTok{ actual_max_temp > }\DecValTok{75} \KeywordTok{AND}\NormalTok{ actual_max_temp <= }\DecValTok{90}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-69}Displaying records 1 - 10}
+\centering
+\begin{tabular}[t]{l|r}
+\hline
+date & actual\_max\_temp\\
+\hline
+2014-7-1 & 89\\
+\hline
+2014-7-3 & 87\\
+\hline
+2014-7-5 & 81\\
+\hline
+2014-7-6 & 84\\
+\hline
+2014-7-7 & 90\\
+\hline
+2014-7-9 & 88\\
+\hline
+2014-7-10 & 83\\
+\hline
+2014-7-11 & 86\\
+\hline
+2014-7-12 & 85\\
+\hline
+2014-7-13 & 83\\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{OR operator}\label{or-operator}
+
+Similiar to the AND operator, the OR operator assists with conditional
+statements. The OR operator will allows for the selection of rows that
+satisfy at least one of the provided conditions
+
+To select the days where maximum temperature equaled 75 or 90, we can do
+the following:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT} \DataTypeTok{date}\NormalTok{, actual_max_temp }\KeywordTok{FROM}\NormalTok{ nyc }\KeywordTok{WHERE}\NormalTok{ actual_max_temp = }\DecValTok{75} \KeywordTok{OR}\NormalTok{ actual_max_temp = }\DecValTok{90}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-70}Displaying records 1 - 10}
+\centering
+\begin{tabular}[t]{l|r}
+\hline
+date & actual\_max\_temp\\
+\hline
+2014-7-7 & 90\\
+\hline
+2014-8-5 & 90\\
+\hline
+2014-8-27 & 90\\
+\hline
+2014-8-31 & 90\\
+\hline
+2014-9-8 & 75\\
+\hline
+2014-9-20 & 75\\
+\hline
+2014-9-21 & 75\\
+\hline
+2015-5-15 & 75\\
+\hline
+2015-5-16 & 75\\
+\hline
+2015-5-18 & 75\\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{ORDER BY keyword}\label{order-by-keyword}
+
+SQL offers a great keyword for sorting queries. The ORDER BY keywword
+will sort the rows by the provided column in the query followed by
+another keyword- most commonly DESC or ASC. DESC will order the rows
+from greatest to least and ASC does the opposite.
+
+For example, we can sort max temperature from least to greatest:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT} \DataTypeTok{date}\NormalTok{, actual_max_temp }\KeywordTok{FROM}\NormalTok{ nyc }\KeywordTok{ORDER} \KeywordTok{BY}\NormalTok{ actual_max_temp }\KeywordTok{ASC}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-71}Displaying records 1 - 10}
+\centering
+\begin{tabular}[t]{l|r}
+\hline
+date & actual\_max\_temp\\
+\hline
+2015-2-20 & 19\\
+\hline
+2015-1-8 & 21\\
+\hline
+2015-2-13 & 21\\
+\hline
+2015-2-16 & 21\\
+\hline
+2015-1-6 & 22\\
+\hline
+2015-1-7 & 23\\
+\hline
+2015-1-10 & 23\\
+\hline
+2015-2-24 & 24\\
+\hline
+2015-2-15 & 25\\
+\hline
+2015-1-31 & 26\\
+\hline
+\end{tabular}
+\end{table}
+
+\chapter{Tutorial - Data Storage with
+SQL}\label{tutorial---data-storage-with-sql}
+
+With the data from our Fitbit collected and placed properly in a csv
+file format, we can easily create a new table in our mySQL database and
+then import the data from the csv file into the proper table!
+
+\section{Create a new database}\label{create-a-new-database}
+
+Creating a new databse in mySQL is simple!Let's create a Database called
+`Biometrics'.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{CREATE} \KeywordTok{DATABASE}\NormalTok{ Biometrics;}
+\end{Highlighting}
+\end{Shaded}
+
+Now we can designate the `Biometrics' database as the database to refer
+to in our following queries using the use statment.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{USE}\NormalTok{ Biometrics;}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Create a new table}\label{create-a-new-table}
+
+Within our new database, we'll need to create a new table to store the
+data. We can do this using the CREATE TABLE statement.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{create} \KeywordTok{table}\NormalTok{ Username (}
+\NormalTok{myIndex }\DataTypeTok{INT}\NormalTok{,}
+\NormalTok{date_collected }\DataTypeTok{DATE}\NormalTok{,}
+\NormalTok{steps }\DataTypeTok{INT}\NormalTok{,}
+\NormalTok{floors_climbed }\DataTypeTok{INT}\NormalTok{,}
+\NormalTok{total_miles }\DataTypeTok{FLOAT}\NormalTok{,}
+\NormalTok{lightly_active_miles }\DataTypeTok{FLOAT}\NormalTok{,}
+\NormalTok{moderately_active_miles }\DataTypeTok{FLOAT}\NormalTok{,}
+\NormalTok{very_active_miles }\DataTypeTok{FLOAT}\NormalTok{,}
+\NormalTok{sedentary_minutes }\DataTypeTok{FLOAT}\NormalTok{,}
+\NormalTok{lightly_active_minutes }\DataTypeTok{FLOAT}\NormalTok{,}
+\NormalTok{fairly_active_minutes }\DataTypeTok{FLOAT}\NormalTok{,}
+\NormalTok{very_active_minutes }\DataTypeTok{FLOAT}\NormalTok{,}
+\NormalTok{HR30_100Minutes }\DataTypeTok{INT}\NormalTok{,}
+\NormalTok{HR100_140Minutes }\DataTypeTok{INT}\NormalTok{,}
+\NormalTok{HR140_170Minutes }\DataTypeTok{INT}\NormalTok{,}
+\NormalTok{HR30170_220Minutes }\DataTypeTok{INT}\NormalTok{,}
+\NormalTok{average_resting_HR }\DataTypeTok{INT}\NormalTok{,}
+\NormalTok{bmi }\DataTypeTok{FLOAT}\NormalTok{,}
+\NormalTok{minutes_asleep }\DataTypeTok{FLOAT}\NormalTok{,}
+\NormalTok{sleep_efficiency }\DataTypeTok{FLOAT}\NormalTok{,}
+\NormalTok{weight }\DataTypeTok{FLOAT}\NormalTok{,}
+\NormalTok{username }\DataTypeTok{VARCHAR}\NormalTok{(}\DecValTok{20}\NormalTok{),}
+\NormalTok{happiness_rating }\DataTypeTok{INT}\NormalTok{,}
+\NormalTok{pain_rating }\DataTypeTok{INT}
+\NormalTok{);}
+\end{Highlighting}
+\end{Shaded}
+
+The first term in each line will be a new collumn name in the table. The
+second term is the SQL data type. Read about mySQL data types at
+\url{https://dev.mysql.com/doc/refman/8.0/en/data-types.html}.
+
+\section{Import Data to table from
+CSV}\label{import-data-to-table-from-csv}
+
+Lastly, we can import our data from the csv file into our table.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{LOAD }\KeywordTok{DATA} \KeywordTok{LOCAL}\NormalTok{ INFILE }\OtherTok{"/Path/To/File"} \KeywordTok{INTO} \KeywordTok{TABLE}\NormalTok{ Username}
+\NormalTok{FIELDS TERMINATED }\KeywordTok{BY} \StringTok{','} 
+\NormalTok{LINES TERMINATED }\KeywordTok{BY} \StringTok{'}\CharTok{\textbackslash{}n}\StringTok{'}
+\NormalTok{IGNORE }\DecValTok{1} \KeywordTok{rows}
+\NormalTok{(myIndex, @date_collected, steps, floors_climbed, total_miles, lightly_active_miles, moderately_active_miles, }
+\NormalTok{very_active_miles, sedentary_minutes, lightly_active_minutes, fairly_active_minutes, very_active_minutes, }
+\NormalTok{HR30_100Minutes, HR100_140Minutes, HR140_170Minutes, HR170_220Minutes, average_resting_HR, bmi, minutes_asleep,}
+\NormalTok{sleep_efficiency, weight, username, happiness_rating, pain_rating) }\KeywordTok{SET}\NormalTok{ date_collected =  STR_TO_DATE(@date_collected, }\StringTok{'%Y-%m-%d'}\NormalTok{);}
+\end{Highlighting}
+\end{Shaded}
+
+\chapter{Conlusion and More
+Resources}\label{conlusion-and-more-resources}
+
+The entirety of the data capture, cleaning, and storage side of the
+project is complete!
+
+There are plenty more opportunities to build upon the data that has been
+captured and stored. Specifically, there is a great opportunity to use
+your data in a mobile app setting. To do this, there are a few resources
+that will help.
+
+\section{Front End Development
+Resources}\label{front-end-development-resources}
+
+\subsection{Expo}\label{expo}
+
+Expo is an open-source platform for making universal native apps for
+Android, iOS, and the web with JavaScript and React. It can be found at
+\url{https://expo.io/}
+
+\subsection{React Native}\label{react-native}
+
+React Native is a framework for building native apps using React. Refer
+to \url{https://reactnative.dev/} for more information
+
+\section{Back End Development
+Resources}\label{back-end-development-resources}
+
+\subsection{Flask}\label{flask}
+
+Flask is a micro web framework written in Python. This will help you in
+building a REST API to communicate data from your database to your
+mobile app! The documentation is at
+\url{https://flask.palletsprojects.com/en/1.1.x/}.
+
+\subsection{Postman}\label{postman}
+
+Postman is a collaboration platform for API development. Postman's
+features simplify each step of building an API and streamline
+collaboration so you can create better APIs---faster. Find the software
+for download at \url{https://www.postman.com/}.
 
 \bibliography{book.bib,packages.bib}
 
