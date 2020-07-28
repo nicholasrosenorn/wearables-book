@@ -1,0 +1,73 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+# Tutorial - Data Storage with SQL
+
+With the data from our Fitbit collected and placed properly in a csv file format, we can easily create a new table in our mySQL database and then import the data from the csv file into the proper table!
+
+## Create a new database
+
+Creating a new databse in mySQL is simple!Let's create a Database called 'Biometrics'. 
+
+```{sql, eval=FALSE}
+CREATE DATABASE Biometrics;
+```
+
+Now we can designate the 'Biometrics' database as the database to refer to in our following queries using the use statment. 
+
+```{sql, eval=FALSE}
+USE Biometrics;
+```
+
+## Create a new table 
+
+Within our new database, we'll need to create a new table to store the data. We can do this using the CREATE TABLE statement. 
+
+```{sql, eval=FALSE}
+create table Username (
+myIndex INT,
+date_collected DATE,
+steps INT,
+floors_climbed INT,
+total_miles FLOAT,
+lightly_active_miles FLOAT,
+moderately_active_miles FLOAT,
+very_active_miles FLOAT,
+sedentary_minutes FLOAT,
+lightly_active_minutes FLOAT,
+fairly_active_minutes FLOAT,
+very_active_minutes FLOAT,
+HR30_100Minutes INT,
+HR100_140Minutes INT,
+HR140_170Minutes INT,
+HR30170_220Minutes INT,
+average_resting_HR INT,
+bmi FLOAT,
+minutes_asleep FLOAT,
+sleep_efficiency FLOAT,
+weight FLOAT,
+username VARCHAR(20),
+happiness_rating INT,
+pain_rating INT
+);
+```
+
+The first term in each line will be a new collumn name in the table. The second term is the SQL data type. Read about mySQL data types at https://dev.mysql.com/doc/refman/8.0/en/data-types.html.
+
+## Import Data to table from CSV 
+
+Lastly, we can import our data from the csv file into our table.
+
+```{sql, eval=FALSE}
+LOAD DATA LOCAL INFILE "/Path/To/File" INTO TABLE Username
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n'
+IGNORE 1 rows
+(myIndex, @date_collected, steps, floors_climbed, total_miles, lightly_active_miles, moderately_active_miles, 
+very_active_miles, sedentary_minutes, lightly_active_minutes, fairly_active_minutes, very_active_minutes, 
+HR30_100Minutes, HR100_140Minutes, HR140_170Minutes, HR170_220Minutes, average_resting_HR, bmi, minutes_asleep,
+sleep_efficiency, weight, username, happiness_rating, pain_rating) SET date_collected =  STR_TO_DATE(@date_collected, '%Y-%m-%d');
+```
+

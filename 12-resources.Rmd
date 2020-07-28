@@ -1,0 +1,26 @@
+# Conlusion and More Resources
+
+The entirety of the data capture, cleaning, and storage side of the project is complete! 
+
+There are plenty more opportunities to build upon the data that has been captured and stored. Specifically, there is a great opportunity to use your data in a mobile app setting. To do this, there are a few resources that will help.
+
+## Front End Development Resources
+
+### Expo
+Expo is an open-source platform for making universal native apps for Android, iOS, and the web with JavaScript and React. It can be found at https://expo.io/ 
+
+### React Native
+React Native is a framework for building native apps using React. Refer to https://reactnative.dev/ for more information
+
+## Back End Development Resources
+
+### Flask
+Flask is a micro web framework written in Python. This will help you in building a REST API to communicate data from your database to your mobile app! The documentation is at https://flask.palletsprojects.com/en/1.1.x/.
+
+### Postman
+Postman is a collaboration platform for API development. Postman's features simplify each step of building an API and streamline collaboration so you can create better APIs—faster. Find the software for download at https://www.postman.com/. 
+
+
+
+
+

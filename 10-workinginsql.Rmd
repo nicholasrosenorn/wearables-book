@@ -1,0 +1,78 @@
+# Working in SQL 
+
+In this section, we will cover and practive the basic skills associated with SQL. 
+
+SQL stands for structered query langauage and is a language that allows us to access and manipulate relational databases. It is common pratice to have structured data stored in databases, and SQL derives information of the data through queries. 
+
+```{r, echo=FALSE}
+nyc <- read.csv("./KNYC.csv")
+library('DBI')
+db <- dbConnect(RSQLite::SQLite(), ":memory:")
+dbWriteTable(db, "nyc", nyc)
+```
+
+## SQL Fundamentals 
+
+### SELECT statement
+
+The SELECT statement is a common start to many queries. It is used when retrieving data from a table. The returned data will be in a table format. 
+
+The FROM statement denotes from which table to perform the query. In each of these example, the table is called 'nyc' because the data is New York City weather data.
+
+The * denotes to select all columns from the table.
+
+```{sql connection=db}
+SELECT * FROM nyc
+```
+
+
+We can also denote specific columns to select by using the column names.
+
+```{sql connection=db}
+SELECT date, actual_max_temp FROM nyc
+```
+
+
+### WHERE clause
+
+To perfrom conditional queries, we can use the WHERE clause. The WHERE clause acts similar to an if statement by denoting which conditions must be upheld in order for the row to be selected in the query. 
+
+For example, we can find the dates on which the maximum temperature was greater than 75 degrees:
+
+```{sql connection=db}
+SELECT date, actual_max_temp FROM nyc WHERE actual_max_temp > 75
+```
+
+### AND operator
+
+Often times, more than one conditional statement is neccessary when writing queries. The AND clause allows for more than one conditional statement that must eb uphelp for the row to be selected. 
+
+Let's Find the dates on which the maximum temperature was greater than 75 degrees but also less than or equal to 90 degrees:
+
+```{sql connection=db}
+SELECT date, actual_max_temp FROM nyc WHERE actual_max_temp > 75 AND actual_max_temp <= 90
+```
+
+### OR operator
+
+Similiar to the AND operator, the OR operator assists with conditional statements. The OR operator will allows for the selection of rows that satisfy at least one of the provided conditions
+
+To select the days where maximum temperature equaled 75 or 90, we can do the following:
+
+```{sql connection=db}
+SELECT date, actual_max_temp FROM nyc WHERE actual_max_temp = 75 OR actual_max_temp = 90
+```
+
+### ORDER BY keyword
+
+SQL offers a great keyword for sorting queries. The ORDER BY keywword will sort the rows by the provided column in the query followed by another keyword- most commonly DESC or ASC. DESC will order the rows from greatest to least and ASC does the opposite.
+
+For example, we can sort max temperature from least to greatest:
+
+
+```{sql connection=db}
+SELECT date, actual_max_temp FROM nyc ORDER BY actual_max_temp ASC;
+```
+
+
+

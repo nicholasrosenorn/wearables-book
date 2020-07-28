@@ -8,6 +8,7 @@ After you have installed Anaconda, open the Anaconda Navigator. It will look sim
 
 <center>!['Figure 1'](images/anacondanav.png){width=80%}</center>
 
-On the left side navigation bar, click on evironments and then search for 'cherrypy'.
+On the left side navigation bar, click on evironments and then search for 'cherrypy'. Check the box next to cherrypy and click the green apply button.
 
------ Open Jupyter notebook description ------
+After, you be able to use the different applications offered through anaconda. Jupyter notebook is great for 
+writing programs in Python and R.

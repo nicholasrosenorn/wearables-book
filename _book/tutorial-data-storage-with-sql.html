@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Wearables Book</title>
+  <title>Chapter 12 Tutorial - Data Storage with SQL | Wearables Book</title>
   <meta name="description" content="This a tutorial based book covering many foundational data science skills and using applying these skills to a complete, end-to-end project." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Wearables Book" />
+  <meta property="og:title" content="Chapter 12 Tutorial - Data Storage with SQL | Wearables Book" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Wearables Book" />
+  <meta name="twitter:title" content="Chapter 12 Tutorial - Data Storage with SQL | Wearables Book" />
   
   <meta name="twitter:description" content="This a tutorial based book covering many foundational data science skills and using applying these skills to a complete, end-to-end project." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
+<link rel="prev" href="working-in-sql.html"/>
 
-<link rel="next" href="intro.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -52,6 +52,68 @@
 
 
 
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -131,25 +193,68 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Wearables Book</h1>
-<p class="author"><em>Merck and Data Mine Corporate Partnership Team</em></p>
-<p class="date"><em>2020-07-24</em></p>
+<div id="tutorial---data-storage-with-sql" class="section level1">
+<h1><span class="header-section-number">Chapter 12</span> Tutorial - Data Storage with SQL</h1>
+<p>With the data from our Fitbit collected and placed properly in a csv file format, we can easily create a new table in our mySQL database and then import the data from the csv file into the proper table!</p>
+<div id="create-a-new-database" class="section level2">
+<h2><span class="header-section-number">12.1</span> Create a new database</h2>
+<p>Creating a new databse in mySQL is simple!Let’s create a Database called ‘Biometrics’.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sql"><code class="sourceCode sql"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">CREATE</span> <span class="kw">DATABASE</span> Biometrics;</a></code></pre></div>
+<p>Now we can designate the ‘Biometrics’ database as the database to refer to in our following queries using the use statment.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sql"><code class="sourceCode sql"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">USE</span> Biometrics;</a></code></pre></div>
 </div>
-<div id="book-overview" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Book Overview</h1>
-<p>A foundation of knowledge in the data sciences can prove advantageous for almost all scientists. Often, however, understanding the fundamentals of any new skill lacking proper instruction or recourses can be difficult. With ample guidance, all can develop a base knowledge of Data Science that can grow and provide new skills for improved research experiences.</p>
-<p>The sets of instruction, examples, and tutorials in this walk-through are specifically designed for Merck Technology and can be distributed to Merck Scientists. The walk-through will be tailored to the needs of the pharmaceutical industry and will relate to work being done at Merck.</p>
-<p>In this walkthrough, a complete, end-to-end, project will be outlined with instructional and applicational opportunities throughout.</p>
+<div id="create-a-new-table" class="section level2">
+<h2><span class="header-section-number">12.2</span> Create a new table</h2>
+<p>Within our new database, we’ll need to create a new table to store the data. We can do this using the CREATE TABLE statement.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sql"><code class="sourceCode sql"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">create</span> <span class="kw">table</span> Username (</a>
+<a class="sourceLine" id="cb3-2" title="2">myIndex <span class="dt">INT</span>,</a>
+<a class="sourceLine" id="cb3-3" title="3">date_collected <span class="dt">DATE</span>,</a>
+<a class="sourceLine" id="cb3-4" title="4">steps <span class="dt">INT</span>,</a>
+<a class="sourceLine" id="cb3-5" title="5">floors_climbed <span class="dt">INT</span>,</a>
+<a class="sourceLine" id="cb3-6" title="6">total_miles <span class="dt">FLOAT</span>,</a>
+<a class="sourceLine" id="cb3-7" title="7">lightly_active_miles <span class="dt">FLOAT</span>,</a>
+<a class="sourceLine" id="cb3-8" title="8">moderately_active_miles <span class="dt">FLOAT</span>,</a>
+<a class="sourceLine" id="cb3-9" title="9">very_active_miles <span class="dt">FLOAT</span>,</a>
+<a class="sourceLine" id="cb3-10" title="10">sedentary_minutes <span class="dt">FLOAT</span>,</a>
+<a class="sourceLine" id="cb3-11" title="11">lightly_active_minutes <span class="dt">FLOAT</span>,</a>
+<a class="sourceLine" id="cb3-12" title="12">fairly_active_minutes <span class="dt">FLOAT</span>,</a>
+<a class="sourceLine" id="cb3-13" title="13">very_active_minutes <span class="dt">FLOAT</span>,</a>
+<a class="sourceLine" id="cb3-14" title="14">HR30_100Minutes <span class="dt">INT</span>,</a>
+<a class="sourceLine" id="cb3-15" title="15">HR100_140Minutes <span class="dt">INT</span>,</a>
+<a class="sourceLine" id="cb3-16" title="16">HR140_170Minutes <span class="dt">INT</span>,</a>
+<a class="sourceLine" id="cb3-17" title="17">HR30170_220Minutes <span class="dt">INT</span>,</a>
+<a class="sourceLine" id="cb3-18" title="18">average_resting_HR <span class="dt">INT</span>,</a>
+<a class="sourceLine" id="cb3-19" title="19">bmi <span class="dt">FLOAT</span>,</a>
+<a class="sourceLine" id="cb3-20" title="20">minutes_asleep <span class="dt">FLOAT</span>,</a>
+<a class="sourceLine" id="cb3-21" title="21">sleep_efficiency <span class="dt">FLOAT</span>,</a>
+<a class="sourceLine" id="cb3-22" title="22">weight <span class="dt">FLOAT</span>,</a>
+<a class="sourceLine" id="cb3-23" title="23">username <span class="dt">VARCHAR</span>(<span class="dv">20</span>),</a>
+<a class="sourceLine" id="cb3-24" title="24">happiness_rating <span class="dt">INT</span>,</a>
+<a class="sourceLine" id="cb3-25" title="25">pain_rating <span class="dt">INT</span></a>
+<a class="sourceLine" id="cb3-26" title="26">);</a></code></pre></div>
+<p>The first term in each line will be a new collumn name in the table. The second term is the SQL data type. Read about mySQL data types at <a href="https://dev.mysql.com/doc/refman/8.0/en/data-types.html" class="uri">https://dev.mysql.com/doc/refman/8.0/en/data-types.html</a>.</p>
+</div>
+<div id="import-data-to-table-from-csv" class="section level2">
+<h2><span class="header-section-number">12.3</span> Import Data to table from CSV</h2>
+<p>Lastly, we can import our data from the csv file into our table.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sql"><code class="sourceCode sql"><a class="sourceLine" id="cb4-1" title="1">LOAD <span class="kw">DATA</span> <span class="kw">LOCAL</span> INFILE <span class="ot">&quot;/Path/To/File&quot;</span> <span class="kw">INTO</span> <span class="kw">TABLE</span> Username</a>
+<a class="sourceLine" id="cb4-2" title="2">FIELDS TERMINATED <span class="kw">BY</span> <span class="st">&#39;,&#39;</span> </a>
+<a class="sourceLine" id="cb4-3" title="3">LINES TERMINATED <span class="kw">BY</span> <span class="st">&#39;</span><span class="ch">\n</span><span class="st">&#39;</span></a>
+<a class="sourceLine" id="cb4-4" title="4">IGNORE <span class="dv">1</span> <span class="kw">rows</span></a>
+<a class="sourceLine" id="cb4-5" title="5">(myIndex, @date_collected, steps, floors_climbed, total_miles, lightly_active_miles, moderately_active_miles, </a>
+<a class="sourceLine" id="cb4-6" title="6">very_active_miles, sedentary_minutes, lightly_active_minutes, fairly_active_minutes, very_active_minutes, </a>
+<a class="sourceLine" id="cb4-7" title="7">HR30_100Minutes, HR100_140Minutes, HR140_170Minutes, HR170_220Minutes, average_resting_HR, bmi, minutes_asleep,</a>
+<a class="sourceLine" id="cb4-8" title="8">sleep_efficiency, weight, username, happiness_rating, pain_rating) <span class="kw">SET</span> date_collected <span class="op">=</span>  STR_TO_DATE(@date_collected, <span class="st">&#39;%Y-%m-%d&#39;</span>);</a></code></pre></div>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
+<a href="working-in-sql.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -180,7 +285,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/11-SQLBio.Rmd",
 "text": "Edit"
 },
 "history": {
