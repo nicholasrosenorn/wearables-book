@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Project Introduction | Wearables Book</title>
+  <title>Chapter 4 Using Git and GitHub | Wearables Book</title>
   <meta name="description" content="This a tutorial based book covering many foundational data science skills and using applying these skills to a complete, end-to-end project." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Project Introduction | Wearables Book" />
+  <meta property="og:title" content="Chapter 4 Using Git and GitHub | Wearables Book" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Project Introduction | Wearables Book" />
+  <meta name="twitter:title" content="Chapter 4 Using Git and GitHub | Wearables Book" />
   
   <meta name="twitter:description" content="This a tutorial based book covering many foundational data science skills and using applying these skills to a complete, end-to-end project." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="intro.html"/>
-<link rel="next" href="using-git-and-github.html"/>
+<link rel="prev" href="project-introduction.html"/>
+<link rel="next" href="fitbit-technology.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -182,20 +182,102 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="project-introduction" class="section level1">
-<h1><span class="header-section-number">Chapter 3</span> Project Introduction</h1>
-<p>An end-to-end project will be outlined in the remainder of the text. Primary concepts included are data capture, data visualization, and client-server communication. The technologies covered will include Python, Bash, SQL, R, and React Native along with many useful packages and dependencies.</p>
-<p>Throughout each section of the text, there will be an introduction to a new technology. Basic programming skills and logic explanation related to the technology will be covered within this section. Using the skills taught, the walkthrough section will follow, where instruction related to the overall project will be given.</p>
-<p>The project being taught in this text is a data capture project that will evolve into a basic mobile application. Using Fitbit technology, users are collecting massive amounts of biometric data that, if captured properly, can be used to benefit pharmaceutical research. Patient activity, heart, sleep, and weight data can all be captured seamlessly. The medicinal benefits are great with a tool like this. It is through simple computing and foundational data science topics that a pipeline and tool can be engineered.</p>
+<div id="using-git-and-github" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Using Git and GitHub</h1>
+<div id="git-and-github-overview" class="section level2">
+<h2><span class="header-section-number">4.1</span> Git and GitHub Overview</h2>
+<p>Git is a distributed version-control system for tracking changes in source code during software development. It is designed for coordinating work among programmers, but it can be used to track changes in any set of files. Its goals include speed, data integrity, and support for distributed, non-linear workflows.</p>
+<p>GitHub serves as a web-based interface for Git while also providing many otehr valuable features for version control and collaboration.</p>
+<p>Downloading Git can be done at <a href="https://git-scm.com/downloads" class="uri">https://git-scm.com/downloads</a>. GitHub is free to create to create an account at <a href="https://github.com/" class="uri">https://github.com/</a>.</p>
+<p>During this section, we will work through the basics of Git and GitHub!</p>
+</div>
+<div id="important-git-commands" class="section level2">
+<h2><span class="header-section-number">4.2</span> Important Git Commands</h2>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> clone                       # clone a repository into a new directory</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> init                        # initialize local directory as a git repository</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> add .                       # add files to local repository</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> commit- m “commit message”  # commit files you staged in local repository</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> remote add origin URL           # sets remote location of Github repository with URL</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> remote -v                         # verifies remote location</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> push                                  # pushes changes from local repository to remote repository </code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> branch                            # check which branch you are currently working on</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> checkout branch-name            # change branches</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> checkout -b branch-name     # create a new branch if branch-name does not exist </code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> status                            # displays state of working directory and changed states</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> pull                                  # update local version of a repository from remote repository</code></pre></div>
+</div>
+<div id="git-and-github-simple-walkthrough" class="section level2">
+<h2><span class="header-section-number">4.3</span> Git and GitHub Simple Walkthrough</h2>
+<p>Let's learn some basics of Git and GitHub through an example.</p>
+<p>To start, make a new directory and cd into it.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">mkdir</span> myGitTutorial
 
+<span class="bu">cd</span> myGitTutorial</code></pre></div>
+<p>Now, create a readme file and add a description within our new directory.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">touch</span> readme.md
+
+<span class="bu">echo</span> this is the read me for my Git tutorial <span class="op">&gt;</span> readme.md</code></pre></div>
+<p>Initialize the Git repository.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> init</code></pre></div>
+<p>Add and commit files to local git repository.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> add .
+
+<span class="fu">git</span> commit -m “initial commit.”</code></pre></div>
+<p>Now, if neeeded, create a GitHub account and then create a new repository.</p>
+<center>
+<img src="images/create%20new%20git%20repo.png" alt="Figure 1" style="width:40.0%" />
+</center>
+<p>Back in command line, set remote location of repository</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> remote add origin link/of/your/GitHub/repo</code></pre></div>
+<p>Now, we can push contents to the remote repository on GitHub.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> push -u origin master</code></pre></div>
+<p>The repository is now set up and can be viewed in Github! You will see the readme file we created in the repo.</p>
+<center>
+<img src="images/github%20view.png" alt="Figure 1" style="width:40.0%" />
+</center>
+<p>Next, we can create a new branch.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> checkout -b tutorial-branch</code></pre></div>
+<p>Make a new file in the tutorial branch</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">touch</span> branch.txt
+<span class="bu">echo</span> this is for the tutorial branch <span class="op">&gt;</span> branch.txt</code></pre></div>
+<p>Stage and commit files to branch.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> add .
+
+<span class="fu">git</span> commit -m <span class="st">&quot;txt file to branch&quot;</span></code></pre></div>
+<p>Push staged files to branch.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> push --set-upstream origin tutorial-branch</code></pre></div>
+<p>When we return to github we will notice that there are two branches!</p>
+<center>
+<img src="images/branch.png" alt="Figure 1" style="width:40.0%" />
+</center>
+<p>Notice that the master branch does not have the newly created branch.txt file. If we navigate to tutorial-branch, we will see the branch.txt file!</p>
+<center>
+<img src="images/commit.png" alt="Figure 1" style="width:40.0%" />
+</center>
+<p>Let's update the master branch with the added files from the branch. To update the master branch, we will need to create a pull request.</p>
+<p>Click the green button that says ‘compare and pull request’.</p>
+<center>
+<img src="images/pull.png" alt="Figure 1" style="width:40.0%" />
+</center>
+<p>Then, click ‘create pull request’. Notice how there are no conflicts with the master branch!</p>
+<center>
+<img src="images/merge.png" alt="Figure 1" style="width:40.0%" />
+</center>
+<p>Now click ‘Merge pull request’ and then ‘confirm merge’.</p>
+<center>
+<img src="images/final.png" alt="Figure 1" style="width:40.0%" />
+</center>
+<p>Once the merge is done processing we can return to the master branch and we will see that branch.txt is now available on the master!</p>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="using-git-and-github.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="project-introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="fitbit-technology.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -226,7 +308,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-ProjectIntroduction.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-Github.Rmd",
 "text": "Edit"
 },
 "history": {
