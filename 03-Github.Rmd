@@ -154,14 +154,14 @@ Let's update the master branch with the added files from the branch. To update t
 
 Click the green button that says ‘compare and pull request’. 
 
-<center>![Figure 1](images/pull.png]){width=40%}</center>
+<center>![Figure 1](images/pull.png){width=40%}</center>
 
 Then, click ‘create pull request’. Notice how there are no conflicts with the master branch! 
 
-<center>![Figure 1](images/merge.png]){width=40%}</center>
+<center>![Figure 1](images/merge.png){width=40%}</center>
 
 Now click ‘Merge pull request’ and then ‘confirm merge’. 
 
-<center>![Figure 1](images/final.png]){width=40%}</center>
+<center>![Figure 1](images/final.png){width=40%}</center>
 
 Once the merge is done processing we can return to the master branch and we will see that branch.txt is now available on the master!
