@@ -97,7 +97,7 @@ git commit -m “initial commit.”
 
 Now, if neeeded, create a GitHub account and then create a new repository. 
 
-<center>![Figure 1](images/create new git repo.png){width=40%}</center>
+<center>![Figure 1](images/create new git repo.png){width=60%}</center>
 
 Back in command line, set remote location of repository 
 
@@ -113,7 +113,7 @@ git push -u origin master
 
 The repository is now set up and can be viewed in Github! You will see the readme file we created in the repo.
 
-<center>![Figure 1](images/github view.png){width=40%}</center>
+<center>![Figure 1](images/github view.png){width=60%}</center>
 
 Next, we can create a new branch. 
 
@@ -144,24 +144,24 @@ git push --set-upstream origin tutorial-branch
 
 When we return to github we will notice that there are two branches!
 
-<center>![Figure 1](images/branch.png){width=40%}</center>
+<center>![Figure 1](images/branch.png){width=60%}</center>
 
 Notice that the master branch does not have the newly created branch.txt file. If we navigate to tutorial-branch, we will see the branch.txt file! 
 
-<center>![Figure 1](images/commit.png){width=40%}</center>
+<center>![Figure 1](images/commit.png){width=60%}</center>
 
 Let's update the master branch with the added files from the branch. To update the master branch, we will need to create a pull request.
 
 Click the green button that says ‘compare and pull request’. 
 
-<center>![Figure 1](images/pull.png){width=40%}</center>
+<center>![Figure 1](images/pull.png){width=60%}</center>
 
 Then, click ‘create pull request’. Notice how there are no conflicts with the master branch! 
 
-<center>![Figure 1](images/merge.png){width=40%}</center>
+<center>![Figure 1](images/merge.png){width=60%}</center>
 
 Now click ‘Merge pull request’ and then ‘confirm merge’. 
 
-<center>![Figure 1](images/final.png){width=40%}</center>
+<center>![Figure 1](images/final.png){width=60%}</center>
 
 Once the merge is done processing we can return to the master branch and we will see that branch.txt is now available on the master!
